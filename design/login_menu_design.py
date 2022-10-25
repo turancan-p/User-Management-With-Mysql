@@ -40,6 +40,7 @@ class Ui_login_menu(object):
         self.username_box.setObjectName("username_box")
         self.password_box = QtWidgets.QLineEdit(self.frame)
         self.password_box.setGeometry(QtCore.QRect(150, 240, 150, 27))
+        self.password_box.setEchoMode(QtWidgets.QLineEdit.Password)
         self.password_box.setObjectName("password_box")
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setGeometry(QtCore.QRect(70, 200, 81, 31))
