@@ -133,24 +133,29 @@
            <bool>false</bool>
           </property>
          </widget>
-         <widget class="QLabel" name="register_button">
+         <widget class="QPushButton" name="register_button">
           <property name="geometry">
            <rect>
-            <x>235</x>
+            <x>240</x>
             <y>390</y>
-            <width>71</width>
-            <height>20</height>
+            <width>80</width>
+            <height>25</height>
            </rect>
           </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(240, 240, 240);</string>
           </property>
           <property name="text">
            <string>Click Here</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
           </property>
          </widget>
         </widget>
@@ -163,4 +168,8 @@
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <signal>registersignal()</signal>
+  <slot>registersignalslot()</slot>
+ </slots>
 </ui>

@@ -64,28 +64,28 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="account_list_button">
                <property name="text">
                 <string>Hesap Listesi</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="account_add_button">
                <property name="text">
                 <string>Hesap Ekle</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="account_delete_button">
                <property name="text">
                 <string>Hesap Çıkar</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QPushButton" name="account_update_button">
                <property name="text">
                 <string>Hesap Güncelle</string>
                </property>
@@ -128,12 +128,15 @@
               </widget>
              </item>
              <item>
-              <widget class="QTableWidget" name="tableWidget">
+              <widget class="QTableWidget" name="account_active_table">
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
                  <height>300</height>
                 </size>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
                </property>
                <column>
                 <property name="text">
@@ -160,6 +163,11 @@
                  <string>Authority</string>
                 </property>
                </column>
+               <column>
+                <property name="text">
+                 <string>Confirm</string>
+                </property>
+               </column>
               </widget>
              </item>
              <item>
@@ -170,7 +178,10 @@
               </widget>
              </item>
              <item>
-              <widget class="QTableWidget" name="tableWidget_2">
+              <widget class="QTableWidget" name="account_waiting_list">
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
                <column>
                 <property name="text">
                  <string>userID</string>
@@ -184,6 +195,21 @@
                <column>
                 <property name="text">
                  <string>Register Date</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Confirm Date</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Authority</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Confirm</string>
                 </property>
                </column>
               </widget>
