@@ -27,5 +27,4 @@ class MainPage(QMainWindow):
                 if column_number2 != 2:
                     if column_number2 > 2:
                         column_number2 -= 1
-                        print(data)
                     self.main_menu.account_waiting_list.setItem(row_number2, column_number2, QTableWidgetItem(str(data)))

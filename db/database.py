@@ -17,7 +17,8 @@ def login_check(username, password):
 
     try:
         result = my_cursor.fetchall()
-        return True
+        if result is not None:
+            return True
     except mysql.connector.Error as e:
         print("Error: ", e)
         return False
@@ -28,6 +29,7 @@ def user_confirmed(username, password):
     my_cursor.execute(command)
 
     for confirmation in my_cursor:
+        print(confirmation)
         if confirmation[0] == 1:
             return True
         else:
@@ -38,6 +40,7 @@ def save_user(userName, userPassword):
     select_command = f"SELECT * FROM users WHERE userName = '{userName}'"
     my_cursor.execute(select_command)
     for username in my_cursor:
+        print(username)
         if username[0]:
             print("Username has allready used!")
             return False

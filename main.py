@@ -3,6 +3,7 @@ from login_menu import LoginPage
 
 app = QApplication([])
 
+
 window = LoginPage()
 window.show()
 app.exec_()
