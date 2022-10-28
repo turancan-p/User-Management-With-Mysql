@@ -26,7 +26,7 @@ class LoginPage(QWidget):
         self.username = self.login_menu.username_box.text()
         self.password = self.login_menu.password_box.text()
         if login_check(self.username, self.password):
-            if user_confirmed(self.username, self.password):
+            if user_confirmed(self.username):
                 self.close()
                 self.main_menu.show()
                 self.main_menu.update_table()
