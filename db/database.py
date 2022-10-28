@@ -69,3 +69,13 @@ def get_data_for_table(confirm):
         return result
     except mysql.connector.Error as e:
         print("Error: ", e)
+
+
+def get_all_data_for_table():
+    try:
+        command = f"SELECT * FROM users"
+        my_cursor.execute(command)
+        result = my_cursor.fetchall()
+        return result
+    except mysql.connector.Error as e:
+        print("Error: ", e)
