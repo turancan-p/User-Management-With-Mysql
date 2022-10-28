@@ -29,7 +29,7 @@ class LoginPage(QWidget):
             if user_confirmed(self.username, self.password):
                 self.close()
                 self.main_menu.show()
-                self.main_menu.get_data()
+                self.main_menu.update_table()
             else:
                 print("You are not confirmed")
 

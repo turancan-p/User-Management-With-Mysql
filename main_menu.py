@@ -9,22 +9,27 @@ class MainPage(QMainWindow):
         self.main_menu = Ui_MainWindow()
         self.main_menu.setupUi(self)
 
-    def get_data(self):
+
+
+
+
+    def update_table(self):
+        #ACTIVE PANEL
         self.main_menu.account_active_table.setRowCount(0)
         self.result = get_data_for_table(1)
         for row_number, row_data in enumerate(self.result):
             self.main_menu.account_active_table.insertRow(row_number)
-            for column_number, data in enumerate(row_data):
-                if column_number != 2:
-                    if column_number > 2:
-                        column_number -= 1
-                    self.main_menu.account_active_table.setItem(row_number, column_number, QTableWidgetItem(str(data)))
-
-        self.result2 = get_data_for_table(0)
-        for row_number2, row_data in enumerate(self.result2):
-            self.main_menu.account_waiting_list.insertRow(row_number2)
-            for column_number2, data in enumerate(row_data):
-                if column_number2 != 2:
-                    if column_number2 > 2:
-                        column_number2 -= 1
-                    self.main_menu.account_waiting_list.setItem(row_number2, column_number2, QTableWidgetItem(str(data)))
+            self.main_menu.account_active_table.setItem(row_number, 0, QTableWidgetItem(str(row_data[0])))#id
+            self.main_menu.account_active_table.setItem(row_number, 1, QTableWidgetItem(str(row_data[1])))#name
+            self.main_menu.account_active_table.setItem(row_number, 2, QTableWidgetItem(str(row_data[3])))#register date
+            self.main_menu.account_active_table.setItem(row_number, 3, QTableWidgetItem(str(row_data[4])))#confirm date
+            self.main_menu.account_active_table.setItem(row_number, 4, QTableWidgetItem(str(row_data[5])))#authority
+        #WAITING PANEL
+        self.main_menu.account_waiting_list.setRowCount(0)
+        self.result = get_data_for_table(0)
+        for row_number, row_data in enumerate(self.result):
+            self.main_menu.account_waiting_list.insertRow(row_number)
+            self.main_menu.account_waiting_list.setItem(row_number, 0, QTableWidgetItem(str(row_data[0])))  # id
+            self.main_menu.account_waiting_list.setItem(row_number, 1, QTableWidgetItem(str(row_data[1])))  # name
+            self.main_menu.account_waiting_list.setItem(row_number, 2,
+                                                        QTableWidgetItem(str(row_data[3])))  # register date

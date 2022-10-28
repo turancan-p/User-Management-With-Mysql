@@ -15,13 +15,11 @@ def login_check(username, password):
     command = f"SELECT * from users WHERE userName = '{username}' AND userPassword = '{password}';"
     my_cursor.execute(command)
 
-    try:
-        result = my_cursor.fetchall()
-        if result is not None:
+    for user in my_cursor:
+        if user is not None:
             return True
-    except mysql.connector.Error as e:
-        print("Error: ", e)
-        return False
+        else:
+            return False
 
 
 def user_confirmed(username, password):
@@ -29,7 +27,6 @@ def user_confirmed(username, password):
     my_cursor.execute(command)
 
     for confirmation in my_cursor:
-        print(confirmation)
         if confirmation[0] == 1:
             return True
         else:

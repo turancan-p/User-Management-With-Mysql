@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Kullanıcı Listesi ve Güncelleme Ekranı</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -56,7 +56,7 @@
           <item>
            <layout class="QGridLayout" name="gridLayout">
             <item row="0" column="3">
-             <widget class="QDateEdit" name="dateEdit_2">
+             <widget class="QDateEdit" name="end_date">
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -66,7 +66,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QDateEdit" name="dateEdit">
+             <widget class="QDateEdit" name="start_date">
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -102,7 +102,7 @@
              </widget>
             </item>
             <item row="0" column="4">
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="list_button">
               <property name="maximumSize">
                <size>
                 <width>80</width>
@@ -123,7 +123,7 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>50</width>
               <height>20</height>
              </size>
             </property>
@@ -133,19 +133,25 @@
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="maximumSize">
                <size>
-                <width>50</width>
+                <width>60</width>
                 <height>16777215</height>
                </size>
               </property>
               <property name="text">
-               <string>Username</string>
+               <string>Kullanıcı Adı</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox">
+             <widget class="QComboBox" name="db_username_combobox">
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -163,12 +169,12 @@
                </size>
               </property>
               <property name="text">
-               <string>Register Date</string>
+               <string>Yetki</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_2">
+             <widget class="QComboBox" name="db_authority_combobox">
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -178,7 +184,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="filter_button">
               <property name="maximumSize">
                <size>
                 <width>80</width>
@@ -199,7 +205,7 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>20</width>
               <height>20</height>
              </size>
             </property>
@@ -209,37 +215,191 @@
         </widget>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableWidget">
-         <column>
-          <property name="text">
-           <string>UserID</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Username</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Register Date</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Confirm Date</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Authority</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Test</string>
-          </property>
-         </column>
+        <widget class="QWidget" name="widget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QTableWidget" name="tableWidget">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <column>
+             <property name="text">
+              <string>UserID</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Username</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Register Date</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Authority</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_2" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+            <widget class="QLineEdit" name="update_db_textbox">
+             <property name="geometry">
+              <rect>
+               <x>120</x>
+               <y>110</y>
+               <width>195</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>195</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>195</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_5">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>10</y>
+               <width>33</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>UserID</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_6">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>60</y>
+               <width>94</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Güncellenecek Kısım</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_7">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>110</y>
+               <width>46</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Yeni Data</string>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="database_userID_combobox">
+             <property name="geometry">
+              <rect>
+               <x>120</x>
+               <y>10</y>
+               <width>50</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="update_db_button">
+             <property name="geometry">
+              <rect>
+               <x>240</x>
+               <y>150</y>
+               <width>75</width>
+               <height>23</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Güncelle</string>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="database_column_name_combobox">
+             <property name="geometry">
+              <rect>
+               <x>120</x>
+               <y>60</y>
+               <width>150</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
