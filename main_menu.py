@@ -18,11 +18,14 @@ class MainPage(QMainWindow):
         self.main_menu.account_add_button.clicked.connect(self.adduser_menu)
         self.main_menu.account_update_button.clicked.connect(self.user_list_menu)
 
+
     def user_list_menu(self):
         self.userlist_and_update_menu.show()
+        self.update_table()
 
     def adduser_menu(self):
         self.addnewuser_menu.show()
+        self.update_table()
 
     def update_table(self):
         # ACTIVE PANEL
