@@ -13,4 +13,7 @@ class SaveUserMenu(QWidget):
 
     def save(self):
         print(self.saveuser_menu.authority_combobox.currentText())
-        save_user(self.saveuser_menu.username_box.text(), self.saveuser_menu.username_box.text(), today= None, authority=self.saveuser_menu.authority_combobox.currentText(), confirmation= 0)
+        username = self.saveuser_menu.username_box.text()
+        password = self.saveuser_menu.password_box.text()
+        authority = self.saveuser_menu.authority_combobox.currentText()
+        save_user(userName=username, userPassword=password, today=None, authority=authority, confirmation=None)
