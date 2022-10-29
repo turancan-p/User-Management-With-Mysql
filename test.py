@@ -1,19 +1,12 @@
-def get_data(self):
-    self.main_menu.account_active_table.setRowCount(0)
-    self.result = get_data_for_table(1)
-    for row_number, row_data in enumerate(self.result):
-        self.main_menu.account_active_table.insertRow(row_number)
-        for column_number, data in enumerate(row_data):
-            if column_number != 2:
-                if column_number > 2:
-                    column_number -= 1
-                self.main_menu.account_active_table.setItem(row_number, column_number, QTableWidgetItem(str(data)))
-
-    self.result2 = get_data_for_table(0)
-    for row_number2, row_data in enumerate(self.result2):
-        self.main_menu.account_waiting_list.insertRow(row_number2)
-        for column_number2, data in enumerate(row_data):
-            if column_number2 != 2:
-                if column_number2 > 2:
-                    column_number2 -= 1
-                self.main_menu.account_waiting_list.setItem(row_number2, column_number2, QTableWidgetItem(str(data)))
+print("Quiz uygulamama hosgeldin!")
+meslek_secim = None
+secim_1 = None
+while True:
+    if meslek_secim is not None:
+        secim_1 = input(f"{meslek_secim} olarak giris yaptin, eger geri donmek istiyorsan `g` yaz\n")
+        if secim_1 != "g":
+            print(f"{meslek_secim} olarak devam ediyorsun")
+        else:
+            meslek_secim = None
+    else:
+        meslek_secim = input("Ogretmen olarak giris yapmak istiyorsan `ogretmen` ,ogrenci olarak giris yapmak istiyorsan `ogrenci` yaz\n")

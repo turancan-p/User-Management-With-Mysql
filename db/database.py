@@ -1,5 +1,4 @@
 import mysql.connector
-from cryptography.fernet import Fernet
 import bcrypt
 from datetime import date
 
@@ -34,6 +33,19 @@ def create(username, password):
         print("Error: ", e)
 
 
+def get_salt(userID):
+    command = f"SELECT * from users WHERE userID = '{int(userID)}';"
+    db_cursor.execute(command)
+    try:
+        result = db_cursor.fetchall()
+        db.commit()
+        salt = result[0][7]
+        return str.encode(salt)
+
+    except mysql.connector.Error as e:
+        print("Error: ", e)
+
+
 def login_check(username, password):
     command = f"SELECT * from users WHERE userName = '{username}';"
     db_cursor.execute(command)
@@ -41,17 +53,13 @@ def login_check(username, password):
         result = db_cursor.fetchall()
         db.commit()
         passw = result[0][2]
-        print(passw)
         salt = result[0][7]
         salt = str.encode(salt)
         utf_pw = password.encode('utf-8')
         hashed = bcrypt.hashpw(utf_pw, salt)
-        print(hashed)
         if str(hashed) == passw:
-            print(1)
             return True
         else:
-            print(2)
             return False
 
     except mysql.connector.Error as e:
@@ -61,15 +69,17 @@ def login_check(username, password):
 def user_confirmed(username):
     command = f"SELECT userConfirmed from users WHERE userName = '{username}';"
     db_cursor.execute(command)
-
-    for confirmation in db_cursor:
-        if confirmation[0] == 1:
+    try:
+        result = db_cursor.fetchall()
+        if result[0][0] == 1:
             return True
         else:
             return False
+    except mysql.connector.Error as e:
+        print("Error: ", e)
 
 
-def save_user(userName, userPassword, today = None, authority = None, confirmation = None):
+def save_user(userName, userPassword, today=None, authority=None, confirmation=None):
     select_command = f"SELECT * FROM users WHERE userName = '{userName}'"
     db_cursor.execute(select_command)
     for username in db_cursor:
@@ -123,5 +133,15 @@ def get_all_data_for_table():
         db_cursor.execute(command)
         result = db_cursor.fetchall()
         return result
+    except mysql.connector.Error as e:
+        print("Error: ", e)
+
+
+def update_data(userID, column_name, data):
+    try:
+        update_command = f"UPDATE users SET {column_name} = %s WHERE userID = %s"
+        val = (data, userID)
+        db_cursor.execute(update_command, val)
+        db.commit()
     except mysql.connector.Error as e:
         print("Error: ", e)
